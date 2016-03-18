@@ -1,0 +1,181 @@
+html{
+    background-color: lightgreen;
+}
+
+body {
+    font-family: calibri;
+}
+
+input[type='text'] {
+    height: 24px;
+    border-radius: 7px;
+    font-size: 24px;
+    width: 200px;
+    padding: 4px;
+    padding-left: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #C0C0C0;
+    outline: none; 
+}
+
+input[type='text']:disabled {
+    
+}
+
+#CreateOrderForm {
+    border: 1px solid;
+    margin: 20px auto;
+    width: 800px;
+}
+
+.form-row {
+    padding: 10px 18px 10px 18px;
+    background: #F3F3F3;
+}
+
+.geoform-row {
+    padding: 10px 18px 10px 18px;
+    background: #F3F3F3;
+}
+
+.form-possibleInput{
+    padding: 10px 18px 10px 18px;
+    background: #F3F3F3;
+}
+
+.form-header {
+    border-bottom: 1px dotted;
+    font-size: 30px;
+    background: #b65eff;
+    color: white;
+}
+
+#timestamp{   
+    font-size: 10pt;
+}
+
+.form-block {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-block span {
+    font-size: 20px;
+    padding-left: 3px;
+}
+
+.form-item {
+    float: left;
+}
+
+.form-field {
+    padding-bottom: 6px;
+}
+
+#form-user .form-item, #form-date .form-item {
+    width: 260px;
+}
+
+#form-geoLocation .form-item {
+     width: 254px;
+}
+
+#form-streetAddress .form-item {
+     width: 254px;
+}
+
+#form-workOrderSeverity {
+    height: 35px;
+    border-radius: 7px;
+    width: 220px;
+    padding: 4px;
+    padding-left: 15px;
+    border: 1px solid #C0C0C0;
+    outline: none; 
+    font-size: 14px;
+    outline:none;
+}
+
+#form-incidentType {
+    height: 35px;
+    border-radius: 7px;
+    width: 220px;
+    padding: 4px;
+    padding-left: 15px;
+    border: 1px solid #C0C0C0;
+    outline: none; 
+    font-size: 14px;
+    outline:none;
+}
+
+.switchButtonZone{
+    clear: both;
+    padding-top: 20px;
+}
+
+#form-workOrderSeverity .Informational {
+    color: black;
+    background-color: lightgreen;
+}
+
+#form-workOrderSeverity .Attend {
+    color: black;
+    background-color:yellow;
+}
+
+#form-workOrderSeverity .Urgent {
+    color: white;
+    background-color:red;
+    font-weight: bold;
+}
+
+#form-description textarea {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#form-description .form-item {
+    width: 100%;
+}
+
+#form-description textarea {
+    width: 100%;
+    height: 250px;
+    resize: none;
+    font-size: 18px;
+    padding: 4px 10px 4px 10px;
+}
+
+.error {
+    color: red;
+    font-size: 14px !important;
+    padding-top: 4px;
+    width: 200px;
+}
+
+.geoerror {
+    color: red;
+    font-size: 14px !important;
+    padding-top: 4px;
+    width: 500px;
+    display: none;
+}
+
+#retryButton{
+    display: none;
+}
+
+.successMessage {
+    color: green;
+    font-size: 14px !important;
+    padding-top: 4px;
+    width: 400px;
+    display: none;
+}
+
+button{
+  clear: both;
+}

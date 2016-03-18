@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html manifest="IncidentForm.appcache">
+    <head>
+        <title>Incident Form</title>
+        <link href="./styles/styles.css" rel="stylesheet" type="text/css">
+		<link href="./styles/jquery-ui.css" rel="stylesheet" type="text/css">
+		<link href="./styles/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+		<script src="./src/scripts.js"></script>
+		<script src="./src/jquery.js"></script>
+		<script src="./src/jquery-ui.js"></script>
+    </head>
+
+<body>
+	<form id="CreateOrderForm">
+		
+		<div class="form-row form-header">
+			<span>Incident Form</span>
+		</div>
+		
+		<div id="form-user" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>First Name</span>
+					</div>
+					<div class="form-field">
+						<input type="text" name="firstName" id="form-firstName">
+						<div id="firstNameError" class="error">Error</div>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Last Name</span>
+					</div>
+					<div class="form-field">
+						<input type="text" name="lastName" id="form-lastName">
+						<div id="lastNameError" class="error">Error</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="form-date" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Date of Incident</span>
+					</div>
+					<div class="form-field">
+						<input type="text" id="form-dateOfWorkOrder" readonly="readonly">
+						<div id="dateError" class="error">Error</div>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Current Time:</span>
+					</div>
+					<div class="form-field">
+						<input id="form-currentTime" type="text" name="currentTime" placeholder="current Time" disabled>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="form-incident" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Incident Type</span>
+					</div>
+					<div class="form-field">
+						<select id="form-incidentType">
+							<option value="invalidSelection" disabled selected>Select one . . .</option>
+							<option value="Fire"> Fire</option>
+							<option value="Dead_Animal"> Dead Animal</option>
+							<option value="Road_Damage"> Road Damage</option>
+							<option value="Down_Tree"> Down Tree</option>
+							<option value="Other"> Other (Must add description below)</option>
+						</select>
+						<div id="incidentError" class="error">Error</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="form-severity" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Severity</span>
+					</div>
+					<div class="form-field">
+						<select id="form-workOrderSeverity">
+							<option value="invalidSelection" disabled selected>Select one . . .</option>
+							<option class="Informational" value="Informational">Information</option>
+							<option class="Attend" value="Attend">Attend</option>
+							<option class="Urgent" value="Urgent">Urgent</option>
+						</select>
+						<div id="severityError" class="error">Error</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="form-description" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Description of work to be done</span>
+					</div>
+					<div class="form-field">
+						<textarea id="form-workOrderDescription" rows="8" cols="50" onkeydown="workOrderDescriptionValid();" onkeypress="workOrderDescriptionValid();"></textarea>
+						<div id="workDescriptionError" class="error">Error</div>
+					</div>
+				</div>
+			</div>
+			<div><button type="button" id="switchToStreetButton" onclick="switchToStreet();">Click Here To Switch Location Input Type</button></div>
+			
+			<div id="geoError1" class="geoerror">Geolocaton Services currently unavailable: User denied the request for Geolocation.</div>
+			<div id="geoError2" class="geoerror">Geolocaton Services currently unavailable: Location information is unavailable.</div>
+			<div id="geoError3" class="geoerror">Geolocaton Services currently unavailable: Request to get user location timed out.</div>
+			<div id="geoError4" class="geoerror">Geolocaton Services currently unavailable: An unknown error occurred.</div>
+			
+		</div>
+		<div id="form-geoLocation" class="geoform-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Latitude</span>
+					</div>
+					<div class="form-field">
+						<input id="form-latitude" type="text" name="latitude" placeholder="Latitude" disabled>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Longitude</span>
+					</div>
+					<div class="form-field">
+						<input id="form-longitude" type="text" name="longitude" placeholder="Longitude" disabled>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Altitude</span>
+					</div>
+					<div class="form-field">
+						<input id="form-altitude" type="text" name="altitude" placeholder="Altitude" disabled>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Heading</span>
+					</div>
+					<div class="form-field">
+						<input id="form-heading" type="text" name="heading" placeholder="Heading" disabled>
+					</div>
+				</div>
+				<div id="refreshButtonGroup">
+				<button type="button" id="refreshButton" onclick="geoRefresh();">Refresh your Location</button>
+				<span id="timestamp"> timestamp </span>
+				</div>
+			</div>
+		</div>
+
+		<div id="form-streetAddress" class="form-possibleInput">
+			<button type="button" id="retryButton" onclick="retryGeolocate();">Or Click Here To Retry Geolocation Services</button>
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<span>Street Address</span>
+					</div>
+					<div class="form-field">
+						<input id="form-StreetAddress" type="text" name="streetAddress" placeholder="1234 Some St">
+						<div id="addressError" class="error">Error</div>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>Zip Code</span>
+					</div>
+					<div class="form-field">
+						<input id="form-ZipCode" type="text" name="zipCode" placeholder="Zip Code">
+						<div id="zipError" class="error">Error</div>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>City</span>
+					</div>
+					<div class="form-field">
+						<input id="form-City" type="text" name="city" placeholder="City">
+						<div id="cityError" class="error">Error</div>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-field">
+						<span>State</span>
+					</div>
+					<div class="form-field">
+						<input id="form-State" type="text" name="state" placeholder="State">
+						<div id="stateError" class="error">Error</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="form-submit" class="form-row">
+			<div class="form-block">
+				<div class="form-item">
+					<div class="form-field">
+						<button type="submit" id="submitForm">Submit</button>
+						<span id="SubmitMessage"></span>
+						<div id="storedData" class="successMessage">Data stored locally to be transferred when next possible</div>
+						<div id="sentData" class="successMessage">New Order sent to server successfully!</div>
+						<div id="sentStoredData" class="successMessage">Locally saved Orders sent to server successfully!</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>	
+</body>
+<footer id="copyright">
+	<hr></hr>
+	<p>&copy; NicoT 2015 -  Wiggly Cat Productions - All rights reserved.</p>	
+	<img src="images/cat.gif" alt=":)"></img>
+
+</footer>
+
+</html>

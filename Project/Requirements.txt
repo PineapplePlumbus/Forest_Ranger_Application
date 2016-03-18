@@ -1,0 +1,26 @@
+PROJECT DESCRIPTION
+
+Project Specification:
+
+The forest department wants you to build an application for their rangers.
+A ranger would provide the following details, to report incidents that may be of interest or may need prompt attention.
+
+The information provided in an intuitive GUI:
+
+1. Ranger's full name
+
+2. Location: latitude, longitude, altitude, heading
+
+3. Time and date of the report
+
+4. Incident type (from a list box: fire, dead animal, road damage, down tree, other)
+
+5. A short description (optional) of the incident. If the incident type is other, this is required.
+
+6. Action Request: Select form a list: Information, Attend, Urgent
+
+Technical details: Once a ranger enters the data and clicks "submit", the data is immediately sent to the server if connected. If there is no connection, the data is stored locally, offline, on the device. Anytime the application finds that the device is connected, then it transmits the saved data and clears it locally. To illustrate the application client side functioning, you have to implement a server side node.js program that will receive the data and prints it on the console.
+
+Timeline: The student has 1 month to complete the project
+
+Project submission: The source code has to be checked into the version control system. The instructor should be informed by email when the final version of the project is submitted.
